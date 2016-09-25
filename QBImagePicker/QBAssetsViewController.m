@@ -658,11 +658,15 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger numberOfColumns;
+#if 0
     if (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation])) {
         numberOfColumns = self.imagePickerController.numberOfColumnsInPortrait;
     } else {
         numberOfColumns = self.imagePickerController.numberOfColumnsInLandscape;
     }
+#else
+    numberOfColumns = self.imagePickerController.numberOfColumnsInPortrait;
+#endif
 
     CGFloat width = (CGRectGetWidth(self.view.frame) - 2.0 * (numberOfColumns - 1)) / numberOfColumns;
 
